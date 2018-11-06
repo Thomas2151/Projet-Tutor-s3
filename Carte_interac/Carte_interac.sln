@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{A0786B88-2ADB-4C21-ABE8-AA2D79766269}") = "Carte_interac", "..\..\..\..\..\..\..\Users\thoma\Source\Repos\Thomas2151\Projet-Tutor-s3\Carte_interac\Carte_interac\Carte_interac.phpproj", "{DFCEE371-E88B-48E8-BE20-FAB5FD5F64BC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DFCEE371-E88B-48E8-BE20-FAB5FD5F64BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFCEE371-E88B-48E8-BE20-FAB5FD5F64BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F8B74C50-08E2-4265-A461-8EE597B1E882}
+	EndGlobalSection
+EndGlobal
