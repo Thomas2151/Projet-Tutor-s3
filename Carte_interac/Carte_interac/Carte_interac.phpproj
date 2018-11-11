@@ -17,6 +17,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="index.php" />
-    <Compile Include="test.php" />
+    <Compile Include="info.php" />
   </ItemGroup>
 </Project>
