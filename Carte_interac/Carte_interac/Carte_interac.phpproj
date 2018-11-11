@@ -18,5 +18,6 @@
   <ItemGroup>
     <Compile Include="index.php" />
     <Compile Include="info.php" />
+    <Compile Include="Marqueur.php" />
   </ItemGroup>
 </Project>

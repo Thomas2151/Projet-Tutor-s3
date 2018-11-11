@@ -1,5 +1,5 @@
 <?php
-
+require 'Marqueur.php';
 echo 'Hello  !';
 ?>
 
@@ -17,22 +17,22 @@ echo 'Hello  !';
         map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);
         
     }
-
-    function addMarker(lat , long,ville){
-        marker = new google.maps.Marker({ map: map, position: new google.maps.LatLng(lat,long) });
-        infowindow = new google.maps.InfoWindow({ content: '<strong>Titre</strong><br>'+ville+' <a href="info.php">Info</a>' });
-        google.maps.event.addListener(marker, 'click', function () { infowindow.open(map, marker); });
-        infowindow.open(map, marker);
-        }
-
     google.maps.event.addDomListener(window, 'load', init_map);
 
-    google.maps.event.addDomListener(window, 'load', function () {
+        function addMarker(lat , long,ville){
+                marker = new google.maps.Marker({ map: map, position: new google.maps.LatLng(lat,long) });
+                infowindow = new google.maps.InfoWindow({ content: '<strong>Titre</strong><br />'+ville+'<a href="info.php">Info</a>' });
+                google.maps.event.addListener(marker, 'click', function () { infowindow.open(map, marker); });
+                infowindow.open(map, marker);
+            }
+        google.maps.event.addDomListener(window, 'load', function () {
         addMarker(48.8314408, 2.3255684,'Paris');
-    });
-    google.maps.event.addDomListener(window, 'load', function () {
-        addMarker(2.3255684, 48.8314408,'Jsp');
-    });
+            });
+
+
+    //google.maps.event.addDomListener(window, 'load', function () {
+    //    addMarker(2.3255684, 48.8314408,'Jsp');
+    //});
 
 </script>
 
