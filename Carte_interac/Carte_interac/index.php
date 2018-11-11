@@ -23,8 +23,7 @@ echo 'Hello  !';
         infowindow = new google.maps.InfoWindow({ content: '<strong>Titre</strong><br>'+ville+' <a href="info.php">Info</a>' });
         google.maps.event.addListener(marker, 'click', function () { infowindow.open(map, marker); });
         infowindow.open(map, marker);
-    }
-
+        }
 
     google.maps.event.addDomListener(window, 'load', init_map);
 
