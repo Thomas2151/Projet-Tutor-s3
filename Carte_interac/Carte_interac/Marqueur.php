@@ -10,22 +10,55 @@
  */
 class Marqueur
 {
-//Attributs
-    private $pays;
-    private $latitude;
-    private $longitude;
-    private $ville;
-    private $info;
+// Attributs
+    private $id ;
+    private $pays; // nom du pays pour le marqueur
+    private $latitude; // latitude du marqueur
+    private $longitude; // longitude du marqueur
+    private $ville; // nom de la ville du marqueur
+    private $info; // ceci est une petite info affiché sur le marqueur
 
-//Constructeur
+// Constructeurs
+    public function hydrate(array $donnees)
+    {
+        foreach ($donnees as $key => $value)
+        {
+            // On récupère le nom du setter correspondant à l'attribut
+            $method = 'set'.ucfirst($key);
+            // Si le setter correspondant existe
+            if (method_exists($this, $method))
+            {
+                // On appelle le setter
+                $this->$method($value);
+            }
+        }
+    }
+
+    //Constructeur qui appelle le constructeur par tableau
+    public function __construct(array $donnees) {
+        $this->hydrate($donnees);
+    }
+    
+    /*Constructeur basique
     public function __construct($latitude,$longitude,$ville,$pays,$info){//permet de crée un point en php
+
         $this->setPays($pays);
         $this->setLatitude($latitude);
         $this->setLongitude($longitude);
         $this->setVille($ville);
         $this->setInfo($info);
+    }*/
+
+// GETTERS/SETTERS
+    public function id(){
+        $this->id;
     }
-//GETTERS/SETTERS
+    public function setId($newId){
+        if ((int)$newId > 0) {
+            $this->id = (int)$newId;
+        }
+    }
+
     public function latitude() {
         return $this->latitude;
     }
@@ -63,13 +96,13 @@ class Marqueur
     }
 
     public function ville() {
-        return $this->name;
+        return $this->ville;
     }
     public function setVille($nouvelleVille) {
-        $this->name = $newName;
+        $this->ville = $nouvelleVille;
     }
 
-//Fonctions
+// Fonctions
     public function addMarker(){ //permet d'ajouter et de crée le point en javascript à la carte
 ?><script>
         function addMarker(lat , long,ville,pays,info){

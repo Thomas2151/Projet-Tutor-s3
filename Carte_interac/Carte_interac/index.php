@@ -1,11 +1,36 @@
 <?php
 require 'Marqueur.php';
 require 'GoogleMap.php';
+require 'BddManager.php';
+
+try {//connection à la bdd et verif si erreur ou non
+    $BDD = new PDO('mysql:host=localhost;dbname=ptut_carte_interactive','root','');
+}
+catch (Exception $e) {
+    die('Erreur : ' . $e->getMessage());
+}
+
+$laBDD = new BddManager($BDD);
 
 $myMap = new GoogleMap();
 $myMap->createMap();
+/*Ajout d'un marqueur dans la base de donnée
+$premierMarqueur = new Marqueur([
+            'pays' => 'France',
+            'latitude' => 48.8314408,
+            'longitude' => 2.3255684,
+            'ville'=>'Paris',
+            'info' => 'Stage 3 mois en développement web'
+                ]);
 
-$premierMarqueur = new Marqueur(48.8314408, 2.3255684,'Paris','France','Stage 3 mois en développement web');
+$premierMarqueur->addMarker();
+
+$laBDD->add($premierMarqueur);
+*/
+
+
+$premierMarqueur = new Marqueur($laBDD->getPays('France'));
+echo("val : ".$premierMarqueur->Ville());
 $premierMarqueur->addMarker();
 
 ?>

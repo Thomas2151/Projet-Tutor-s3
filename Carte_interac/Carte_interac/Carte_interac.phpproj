@@ -16,6 +16,7 @@
     <IncludeDebugInformation>false</IncludeDebugInformation>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="BddManager.php" />
     <Compile Include="GoogleMap.php" />
     <Compile Include="index.php" />
     <Compile Include="info.php" />
