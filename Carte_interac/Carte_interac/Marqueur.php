@@ -63,7 +63,7 @@ class Marqueur
         return $this->latitude;
     }
     public function setLatitude($nouvelleLat) {
-        $this->latitude=$nouvelleLat;     
+        $this->latitude=(float)$nouvelleLat;     
     }
 
     public function longitude() {
@@ -71,28 +71,28 @@ class Marqueur
     }
     public function setLongitude($nouvelleLong) {
         
-            $this->longitude = $nouvelleLong;      
+            $this->longitude = (float)$nouvelleLong;      
     }
 
     public function pays() {
         return $this->pays;
     }
     public function setPays($nouveauPays) {
-        $this->pays = $nouveauPays;
+        $this->pays = (string)$nouveauPays;
     }
 
     public function info() {
         return $this->info;
     }
     public function setInfo($nouvelleInfo) {
-        $this->info = $nouvelleInfo;
+        $this->info = (string)$nouvelleInfo;
     }
 
     public function ville() {
         return $this->ville;
     }
     public function setVille($nouvelleVille) {
-        $this->ville = $nouvelleVille;
+        $this->ville = (string) $nouvelleVille;
     }
 
 // Fonctions

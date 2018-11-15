@@ -12,15 +12,18 @@ catch (Exception $e) {
 }
 
 $laBDD = new BddManager($BDD);
-
 $myMap = new GoogleMap();
+$arrayMarqueur = array();
+
+
 $myMap->createMap();
-/*Ajout d'un marqueur dans la base de donnée
+
+/*//Ajout d'un marqueur dans la base de donnée
 $premierMarqueur = new Marqueur([
-            'pays' => 'France',
-            'latitude' => 48.8314408,
-            'longitude' => 2.3255684,
-            'ville'=>'Paris',
+            'pays' => 'angleterre',
+            'latitude' => 51.5085300,
+            'longitude' => -0.1257400,
+            'ville'=>'Londre',
             'info' => 'Stage 3 mois en développement web'
                 ]);
 
@@ -29,11 +32,20 @@ $premierMarqueur->addMarker();
 $laBDD->add($premierMarqueur);
 */
 
-
-$premierMarqueur = $laBDD->getPays('France');
-$vue = new VueMarqueur;
-echo($vue->tableauMarqueur($premierMarqueur));
-
+$i=1;//permet de commencer a l'id 1
+$n=1;//permet de compter le nombre d'id qui n'existe pas dans la base de données pour ne pas terminer la boucle alors que tout les id ne sont pas 
+while( $i<=sizeof($val = $laBDD->countId())+$n){
+    if(($res=$laBDD->getId($i))==true){
+        $arrayMarqueur[$i] = $laBDD->get($i);
+        $arrayMarqueur[$i]->addMarker();
+        $i++;
+    }else{
+        echo('erreur id non existant '.$i);
+        $i++;
+        $n++;
+    }
+}
+echo('/nombre d id dans la bdd :'.sizeof($val = $laBDD->countId()));
 
 ?>
 <script src='https://maps.googleapis.com/maps/api/js?key='>//lien permettant d'obtenir les ressources pour une carte google</script>
