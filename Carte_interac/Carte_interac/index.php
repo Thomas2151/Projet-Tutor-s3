@@ -17,35 +17,35 @@ $arrayMarqueur = array();
 
 
 $myMap->createMap();
-
+// site pour obtenir les coordonnées https://www.gps-longitude-latitude.net/longitude-latitude-coordonnees-gps-du-lieu
 /*//Ajout d'un marqueur dans la base de donnée
 $premierMarqueur = new Marqueur([
-            'pays' => 'angleterre',
-            'latitude' => 51.5085300,
+            'pays' => 'Japon',
+            'latitude' =>  139.691706,
             'longitude' => -0.1257400,
-            'ville'=>'Londre',
+            'ville'=>'Tokyo',
             'info' => 'Stage 3 mois en développement web'
                 ]);
 
 $premierMarqueur->addMarker();
 
-$laBDD->add($premierMarqueur);
+//$laBDD->add($premierMarqueur);
 */
 
 $i=1;//permet de commencer a l'id 1
-$n=1;//permet de compter le nombre d'id qui n'existe pas dans la base de données pour ne pas terminer la boucle alors que tout les id ne sont pas 
+$n=1;//permet de compter le nombre d'id qui n'existe pas dans la base de données pour ne pas terminer la boucle alors que tout les id ne sont pas
 while( $i<=sizeof($val = $laBDD->countId())+$n){
     if(($res=$laBDD->getId($i))==true){
         $arrayMarqueur[$i] = $laBDD->get($i);
         $arrayMarqueur[$i]->addMarker();
         $i++;
+
     }else{
         echo('erreur id non existant '.$i);
         $i++;
         $n++;
     }
 }
-echo('/nombre d id dans la bdd :'.sizeof($val = $laBDD->countId()));
 
 ?>
 <script src='https://maps.googleapis.com/maps/api/js?key='>//lien permettant d'obtenir les ressources pour une carte google</script>

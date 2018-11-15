@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 /**
  * GoogleMap short summary.
@@ -8,9 +8,7 @@
  * @version 1.0
  * @author thoma
  */
-?>
-<script src='https://maps.googleapis.com/maps/api/js?key='>//lien permettant d'obtenir les ressources pour une carte google</script>
-<?php
+
 class GoogleMap
 {
 
