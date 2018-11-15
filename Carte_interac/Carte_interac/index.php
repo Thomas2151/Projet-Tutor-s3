@@ -2,6 +2,7 @@
 require 'Marqueur.php';
 require 'GoogleMap.php';
 require 'BddManager.php';
+require 'VueMarqueur.php';
 
 try {//connection à la bdd et verif si erreur ou non
     $BDD = new PDO('mysql:host=localhost;dbname=ptut_carte_interactive','root','');
@@ -29,9 +30,10 @@ $laBDD->add($premierMarqueur);
 */
 
 
-$premierMarqueur = new Marqueur($laBDD->getPays('France'));
-echo("val : ".$premierMarqueur->Ville());
-$premierMarqueur->addMarker();
+$premierMarqueur = $laBDD->getPays('France');
+$vue = new VueMarqueur;
+echo($vue->tableauMarqueur($premierMarqueur));
+
 
 ?>
 <script src='https://maps.googleapis.com/maps/api/js?key='>//lien permettant d'obtenir les ressources pour une carte google</script>

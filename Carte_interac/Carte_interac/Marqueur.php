@@ -63,22 +63,15 @@ class Marqueur
         return $this->latitude;
     }
     public function setLatitude($nouvelleLat) {
-        if (!is_float($nouvelleLat)) {
-            trigger_error('La valeur  doit être un nombre float', E_USER_WARNING);
-            return;
-        }
-        $this->latitude=$nouvelleLat;
+        $this->latitude=$nouvelleLat;     
     }
 
     public function longitude() {
         return $this->longitude;
     }
     public function setLongitude($nouvelleLong) {
-        if (!is_float($nouvelleLong)) {
-            trigger_error('La valeur  doit être un nombre float', E_USER_WARNING);
-            return;
-        }
-        $this->longitude = $nouvelleLong;
+        
+            $this->longitude = $nouvelleLong;      
     }
 
     public function pays() {
