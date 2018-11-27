@@ -23,4 +23,8 @@
     <Compile Include="Marqueur.php" />
     <Compile Include="VueMarqueur.php" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="app.js" />
+    <Content Include="CSS.css" />
+  </ItemGroup>
 </Project>

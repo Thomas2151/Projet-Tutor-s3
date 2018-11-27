@@ -26,7 +26,7 @@ class BddManager
 
     public function add(Marqueur $marqueur) {
 
-        $q = $this->_db->prepare('INSERT INTO marqueurs SET pays = :pays,latitude = :latitude, longitude = :longitude, ville = :ville, info = :info ');
+        $q = $this->_db->prepare('INSERT INTO marqueurs SET pays = :pays,latitude = :latitude, longitude = :longitude, ville = :ville, info = :info ,domaine =:domaine ,departement = :departement,annee = :titre, etablissement :etablissement');
 
         $q->bindValue(':pays', $marqueur->pays() );
         $q->bindValue(':latitude', $marqueur->latitude());
@@ -34,9 +34,17 @@ class BddManager
         $q->bindValue(':ville', $marqueur->ville());
         $q->bindValue(':info', $marqueur->info());
 
+        $q->bindValue(':domaine', $marqueur->domaine());
+        $q->bindValue(':departement', $marqueur->departement());
+        $q->bindValue(':annee', $marqueur->annee());
+        $q->bindValue(':etablissement', $marqueur->etablissement());
+
+
+
+
         $q->execute();
     }
-
+/*
     public function getPays($pays) {
         $marqueur = array();
 
@@ -47,23 +55,45 @@ class BddManager
         return $marqueur;
     }
 
-    public function get($id) {
 
-        $id = (int) $id;
+    public function getPays($pays) {
+        $pays = (string) $pays;
 
-        $q = $this->_db->query('SELECT *  FROM marqueurs WHERE id = '.$id);
+        $q = $this->_db->query('SELECT * FROM marqueurs WHERE pays LIKE \''.$pays.'\'');
+        $donnees = $q->fetch(PDO::FETCH_ASSOC);
+        return new Marqueur($donnees);
+    }
+     */
+
+
+    public function getPays($pays) {
+        $pays = (string) $pays;
+
+        $q = $this->_db->query('SELECT * FROM marqueurs WHERE pays LIKE \''.$pays.'\'');
+        $donnees = $q->fetch(PDO::FETCH_ASSOC);
+        return new Marqueur($donnees);
+
+
+    }
+
+
+    public function get($idM) {
+
+        $idM = (int) $idM;
+
+        $q = $this->_db->query('SELECT *  FROM marqueurs WHERE idM = '.$idM);
         $donnees = $q->fetch(PDO::FETCH_ASSOC);
 
         return new Marqueur($donnees);
     }
 
-    public function getId($id){
+    public function getidM($idM){
 
-        $id = (int) $id;
+        $idM = (int) $idM;
 
-        $q = $this->_db->query('SELECT EXISTS (SELECT id FROM marqueurs WHERE id="' . $id . '" ) AS id_exist');
+        $q = $this->_db->query('SELECT EXISTS (SELECT idM FROM marqueurs WHERE idM="' . $idM . '" ) AS idM_exist');
         $donnees = $q->fetch();
-        if($donnees['id_exist']==true){
+        if($donnees['idM_exist']==true){
             return true;
         }else{
             return false;
@@ -72,7 +102,20 @@ class BddManager
 
     }
 
-    public function countId(){
+
+    public function countNbPaysIdentique($pays){
+
+        $q = $this->_db->query('SELECT COUNT(*) as NB FROM marqueurs where pays LIKE \''.$pays.'\'');
+        $donnees = $q->fetch();
+
+
+        return $donnees;
+
+
+    }
+
+
+    public function countidM(){
 
         $q = $this->_db->query('SELECT COUNT(*) as NB FROM marqueurs ');
         $donnees = $q->fetch();
@@ -82,9 +125,9 @@ class BddManager
 
     }
 
-    public function maxId(){
+    public function maxidM(){
 
-        $q = $this->_db->query('SELECT MAX(id) as NB FROM marqueurs ');
+        $q = $this->_db->query('SELECT MAX(idM) as NB FROM marqueurs ');
         $donnees = $q->fetch();
 
 

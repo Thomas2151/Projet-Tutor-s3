@@ -8,7 +8,19 @@
  * @version 1.0
  * @author thoma
  */
+?> 
+<script src='https://maps.googleapis.com/maps/api/js?key='>//lien permettant d'obtenir les ressources pour une carte google</script>
 
+<div style='overflow:hidden;height:440px;width:700px;'>
+
+    <!--position de la carte dans la page html-->
+    <div id='gmap_canvas' style='height:350px;width:700px;'></div>
+    <style>#gmap_canvas img{max-width:none!important;background:none!important}</style>
+</div>
+
+
+
+<?php 
 class GoogleMap
 {
 
@@ -17,7 +29,7 @@ class GoogleMap
 
     }
 
-    public function createMap(){
+    public function createMap(){ //script permettant de générer la carte Google Map 
     ?>  <script>
             function init_map() {
             var myOptions = {
